@@ -23,6 +23,21 @@ app.get('/rest/orders', orders.list);
 app.get('/rest/orders/:id', orders.find);
 app.post('/rest/orders', orders.create);
 
-app.listen(appEnv.port, appEnv.bind);
-console.log('App started on ' + appEnv.bind + ':' + appEnv.port);
+
+var processPort;
+var processHost;
+// processHost = appEnv.bind;
+   
+console.log("Process Env Variables:", process.env);
+
+if (appEnv.isLocal){
+     processPort = process.env.PORT || 8085;
+}
+else{
+    processPort = appEnv.port;
+    
+}
+
+app.listen(processPort);
+console.log('App started on '  + ':' + processPort);
 
