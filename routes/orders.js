@@ -1,6 +1,12 @@
 /*eslint-env node */
 /*globals cloudantService */
-var cloudant = require('cloudant')(cloudantService.credentials.url);
+//var cloudant = require('cloudant')(cloudantService.credentials.url);
+
+var cloudantServiceCredentialsURL = "https://7a9141ed-e832-4800-9d6c-9b89fdfcf6f4-bluemix:0819c0128e5dbb3957f1373e2cf1758736ab00736b54146cd0b673b5e2324cea@7a9141ed-e832-4800-9d6c-9b89fdfcf6f4-bluemix.cloudant.com";
+var cloudant = require('cloudant')(cloudantServiceCredentialsURL);
+
+console.log('Cloudant URL', cloudantServiceCredentialsURL);
+
 
 //Initiate the database.
 cloudant.db.create('orders', function(err/*, body*/) {
